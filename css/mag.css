@@ -1,0 +1,344 @@
+/* ==========================================================================
+   MAG Transportation Study — Base Styles (Bootstrap 3.2.0 compatible)
+   BEM namespace: mag-
+   ========================================================================== */
+
+/* ---- Tokens ---------------------------------------------------------------- */
+:root{
+  --mag-blue:#18345D;     /* Berkley Blue (primary)   */
+  --mag-green:#6EBE19;    /* Kelly Green (primary CTA)*/
+  --mag-red:#D82E19;      /* Madder (accent)          */
+  --mag-cyan:#00B3E4;     /* Process Cyan (accent)    */
+  --mag-teal:#108284;     /* Mag Teal (accent)        */
+
+  --mag-text:#1b1b1b;
+  --mag-muted:#6b7280;    /* gray-500-ish */
+  --mag-bg:#ffffff;
+  --mag-surface:#f7f9fc;
+
+  --mag-radius:6px;
+  --mag-gap-1:8px;
+  --mag-gap-2:16px;
+  --mag-gap-3:24px;
+  --mag-gap-4:32px;
+}
+
+/* ---- Base ------------------------------------------------------------------ */
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+body.mag-body{
+  font-family: "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--mag-text);
+  background: var(--mag-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible style for keyboard users */
+:focus { outline: 3px solid rgba(0,179,228,.4); outline-offset: 2px; } /* cyan */
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible { outline: 3px solid rgba(0,179,228,.6); outline-offset: 2px; }
+
+/* Screen-reader utility (Bootstrap 3 already has .sr-only; add focusable variant) */
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto;
+}
+
+/* ---- Header ---------------------------------------------------------------- */
+.mag-header { background:#fff; border-bottom:1px solid #e5e7eb; }
+.mag-header__top { padding: 8px 15px; }
+.mag-header__utility-list { margin: 0; }
+.mag-header__utility-link { color: var(--mag-blue); }
+.mag-header__utility-link:hover, .mag-header__utility-link:focus { text-decoration: underline; }
+
+.mag-header__main { padding: 14px 15px; }
+.mag-header__logo img { max-height: 48px; }
+.mag-header__nav-list { margin: 8px 0 0; }
+.mag-header__nav-link {
+  color:#0f172a; /* near-black */
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+.mag-header__nav-link:hover, .mag-header__nav-link:focus {
+  background: #eef2f7;
+  text-decoration: none;
+}
+
+/* Search modal tweaks */
+#siteSearchModal .modal-dialog { margin-top: 80px; }
+.mag-search .form-control.input-lg { height: 44px; }
+
+/* ---- Hero / Banner ---------------------------------------------------------- */
+.mag-hero { position: relative; background: var(--mag-blue); color:#fff; overflow: hidden; }
+.mag-hero__media { position: relative; }
+.mag-hero__img {
+  width:100%; object-fit: cover; opacity: .35; display:block;
+}
+.mag-hero__overlay {
+  position:absolute; inset:0;
+  display:flex; align-items:center;
+  background: linear-gradient(0deg, rgba(24,52,93,0.55), rgba(24,52,93,0.35));
+}
+.mag-hero__title { font-weight: 700; margin: 0 0 8px; }
+.mag-hero__dek { margin: 0 0 14px; font-size: 16px; }
+.mag-hero__ctas a { margin-right: 10px; }
+
+/* ---- Buttons ---------------------------------------------------------------- */
+.mag-button{
+  display:inline-block; font-weight:600; border-radius: var(--mag-radius);
+  padding: 10px 16px; line-height: 1.2; transition: background .2s, color .2s, border-color .2s;
+}
+.mag-button--primary{
+  background: var(--mag-green); color:#0b0b0b; border: 2px solid var(--mag-green);
+}
+.mag-button--primary:hover, .mag-button--primary:focus{
+  background:#7dd821; border-color:#7dd821; color:#0b0b0b; text-decoration:none;
+}
+.mag-button--secondary{
+  background:#fff; color: var(--mag-blue); border:2px solid var(--mag-blue);
+}
+.mag-button--secondary:hover, .mag-button--secondary:focus{
+  background:#eef5ff; text-decoration:none;
+}
+.mag-link{ color:#0a66c2; }
+.mag-link:hover, .mag-link:focus{ text-decoration: underline; }
+
+/* ---- Layout ----------------------------------------------------------------- */
+.mag-layout { margin-top: var(--mag-gap-4); margin-bottom: var(--mag-gap-4); }
+
+/* Right rail action panel (hidden on xs; visible md+) */
+.mag-cta-panel { margin-top: 0; }
+@media (max-width: 767px){
+  .mag-cta-panel { display: none; }
+}
+
+/* Cards */
+.mag-card{
+  background:#fff; border:1px solid #e5e7eb; border-radius: var(--mag-radius);
+  box-shadow: 0 1px 2px rgba(16,24,40,.04);
+  margin-bottom: var(--mag-gap-3);
+}
+.mag-card__body{ padding: var(--mag-gap-3); }
+
+/* Sections */
+.mag-section{ margin-bottom: var(--mag-gap-4); }
+.mag-section__title{
+  margin: 0 0 var(--mag-gap-2);
+  font-size: 22px; font-weight: 700; color: var(--mag-blue);
+}
+.mag-section__subtitle {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--mag-blue);
+}
+
+
+.mag-list{ padding-left: 18px; }
+.mag-list li{ margin-bottom: 8px; }
+
+/* Figures */
+.mag-figure { margin: var(--mag-gap-2) 0; }
+.mag-figure__caption { color: var(--mag-muted); font-size: 13px; margin-top: 6px; }
+
+/* Partners */
+.mag-section--partners {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+.mag-partners__list {
+  margin-top: 30px;
+}
+
+.mag-partners__item {
+  margin-bottom: 30px;
+}
+
+.mag-partners__item img {
+  max-width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: all 0.2s ease-in-out;
+}
+
+.mag-partners__item img:hover,
+.mag-partners__item img:focus {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Charts */
+.mag-chart-toggle {
+  margin: 10px 0 16px;
+}
+.mag-chart-btn.active {
+  background-color: #18345D;
+  color: #fff;
+}
+.mag-chart__summary {
+  margin-top: 10px;
+  color: #344054;
+  font-size: 14px;
+  text-align: center;
+}
+/* ==========================================================================
+   Chart Fallback Styles (for when JS/Chart.js is disabled)
+   ========================================================================== */
+
+.mag-chart-fallback {
+  border: 1px solid #dce3ed;
+  background-color: #f8fafc;
+  border-left: 6px solid #18345D; /* MAG brand navy */
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin-top: 20px;
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: magFadeIn 0.8s ease-out 0.2s forwards;
+}
+
+.mag-chart-fallback strong {
+  color: #18345D;
+}
+
+.mag-chart-fallback ul {
+  margin: 10px 0 0 16px;
+  padding: 0;
+}
+
+.mag-chart-fallback li {
+  margin-bottom: 4px;
+  list-style-type: disc;
+}
+
+.mag-chart-fallback p {
+  margin: 0 0 8px 0;
+}
+
+/* Fade-in animation for fallback block */
+@keyframes magFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode variant */
+@media (prefers-color-scheme: dark) {
+  .mag-chart-fallback {
+    background-color: #1e293b;
+    border-color: #334155;
+    border-left-color: #00B3E4; /* MAG bright blue accent */
+    color: #e2e8f0;
+  }
+  .mag-chart-fallback strong {
+    color: #00B3E4;
+  }
+}
+
+/* Forms */
+.mag-form .form-group label{ font-weight: 600; }
+.mag-form .form-control{ border-radius: 4px; }
+.mag-form__status{ margin-top: 10px; color: #166534; } /* green-800 for success */
+
+/* Sticky CTA (mobile only) */
+.mag-sticky-cta{
+  position: fixed; left:0; right:0; bottom:0; z-index: 1040;
+  display: none; /* hidden by default; shown on small screens below */
+  padding: 8px; background: rgba(255,255,255,.96); border-top: 1px solid #e5e7eb;
+}
+.mag-sticky-cta__btn{
+  display:inline-block; width:48%; text-align:center; padding:10px 0; border-radius:8px;
+  font-weight:700; text-transform: uppercase; letter-spacing:.02em;
+}
+.mag-sticky-cta__btn--primary{ background: var(--mag-green); color:#0b0b0b; }
+.mag-sticky-cta__btn--secondary{ background:#fff; color: var(--mag-blue); border:2px solid var(--mag-blue); }
+
+@media (max-width: 767px){
+  .mag-sticky-cta{ display:block; }
+  /* give page bottom padding so content isn't hidden behind sticky bar */
+  body.mag-body{ padding-bottom: 72px; }
+}
+
+/* Footer */
+.mag-footer {
+  background-color: #18345D; /* MAG Berkley Blue */
+  color: #fff;
+  padding: 40px 0 30px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.mag-footer a {
+  color: #6EBE19; /* Kelly Green */
+  text-decoration: none;
+}
+.mag-footer a:hover,
+.mag-footer a:focus {
+  text-decoration: underline;
+  color: #00B3E4; /* Process Cyan accent */
+}
+
+.mag-footer__links {
+  margin-bottom: 20px;
+}
+.mag-footer__links li {
+  padding: 0 6px;
+}
+
+.mag-footer__address {
+  margin-bottom: 15px;
+  font-style: normal;
+}
+
+.mag-footer__social {
+  margin: 15px 0;
+}
+.mag-footer__social-link {
+  color: #fff;
+  font-size: 20px;
+  margin: 0 6px;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+.mag-footer__social-link:hover,
+.mag-footer__social-link:focus {
+  color: #6EBE19;
+}
+
+.mag-footer__legal {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mag-footer__links li {
+    display: block;
+    margin: 3px 0;
+  }
+}
+
+/* Map thumbnail */
+.mag-map-thumb img{
+  border-radius: var(--mag-radius);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(16,24,40,.04);
+  transition: transform .15s ease;
+}
+.mag-map-thumb:hover img, .mag-map-thumb:focus img{ transform: scale(1.01); }
+
+/* Modal tweaks */
+.mag-modal .modal-header{ border-bottom: 1px solid #e5e7eb; }
+.mag-modal .modal-body img{ width:100%; height:auto; display:block; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
