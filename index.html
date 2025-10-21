@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- SEO -->
-        <title>Loop 101 &amp; Loop 202 Bottleneck Study – MAG</title>
+        <title>Loop 101 and Loop 202 Bottleneck Study</title>
         <meta name="description" content="Learn about the Loop 101 & Loop 202 Bottleneck Study. Register for the public meeting, take the survey, share feedback, and subscribe for updates.">
         <meta name="robots" content="index,follow">
         <link rel="canonical" href="https://yourusername.github.io/mag-transportation-study-template/transportation-study-template.html">
@@ -56,22 +56,26 @@
             </div>
 
             <div class="mag-header__main container">
-                <div class="row">
-                <div class="col-sm-4">
+                <div class="mag-header__bar">
                     <a href="#" class="mag-header__logo">
-                    <img src="img/Maricopa-Association-of-Governments.png" alt="Maricopa Association of Governments">
+                        <img src="img/Maricopa-Association-of-Governments.png" alt="Maricopa Association of Governments">
                     </a>
-                </div>
-                <div class="col-sm-8">
-                    <nav class="mag-header__nav" aria-label="Primary">
-                    <ul class="mag-header__nav-list list-inline text-right">
-                        <li><a class="mag-header__nav-link" href="#">Programs</a></li>
-                        <li><a class="mag-header__nav-link" href="#">Committees</a></li>
-                        <li><a class="mag-header__nav-link" href="#">Newsroom</a></li>
-                        <li><a class="mag-header__nav-link" href="#">About Us</a></li>
-                    </ul>
+                    <button class="mag-header__toggle" type="button" id="magNavToggle" aria-expanded="false" aria-controls="magPrimaryNav">
+                        <span class="mag-header__toggle-box" aria-hidden="true">
+                            <span class="mag-header__toggle-line"></span>
+                            <span class="mag-header__toggle-line"></span>
+                            <span class="mag-header__toggle-line"></span>
+                        </span>
+                        <span class="mag-header__toggle-label">Menu</span>
+                    </button>
+                    <nav id="magPrimaryNav" class="mag-header__nav mag-header__nav--open" aria-label="Primary" aria-hidden="false">
+                        <ul class="mag-header__nav-list">
+                            <li class="mag-header__nav-item"><a class="mag-header__nav-link" href="#">Programs</a></li>
+                            <li class="mag-header__nav-item"><a class="mag-header__nav-link" href="#">Committees</a></li>
+                            <li class="mag-header__nav-item"><a class="mag-header__nav-link" href="#">Newsroom</a></li>
+                            <li class="mag-header__nav-item"><a class="mag-header__nav-link" href="#">About Us</a></li>
+                        </ul>
                     </nav>
-                </div>
                 </div>
             </div>
         </header>
@@ -86,7 +90,7 @@
                     <p class="mag-hero__dek">Help shape safety and mobility improvements at the interchange.</p>
                     <p class="mag-hero__ctas">
                         <a class="mag-button mag-button--primary" href="#register">Register for Public Meeting</a>
-                        <a class="mag-button mag-button--secondary" href="#survey">Take the Survey</a>
+                        <a class="mag-button mag-button--secondary" href="#feedback">Take the Survey</a>
                         <a class="mag-link" href="#updates">Email Updates</a>
                         <a class="mag-link" href="#materials">Materials (PDF)</a>
                     </p>
@@ -95,105 +99,244 @@
         </section>
 
         <main id="main" role="main">
-            <div class="container mag-layout">
-                <div class="row">
-                    <section id="meeting" class="mag-section mag-section--meeting">
-                        <div class="container col-sm-8">
-                            <h2 class="mag-section__title">Save the Date for a Virtual Public Meeting</h2>
-                            <div class="mag-card">
-                                <div class="mag-card__body">
-                                    <p>Join us for a virtual public meeting to learn about the <strong>Loop 101 and Loop 202 Bottleneck Study</strong>.</p>
-                                    <p><strong>Wednesday, October 15, 2025</strong> from <strong>6 – 7 pm</strong> (presentation begins at 6 pm).</p>
-                                    <p>Study team members will be available to answer questions following the presentation.</p>
-                                    <p><a class="mag-button mag-button--primary" href="#">Register / Join the Meeting</a></p>
+            <div class="mag-layout">
+                <section id="meeting" class="mag-section mag-section--meeting" aria-labelledby="meeting-heading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 id="meeting-heading" class="mag-section__title">Save the Date for a Virtual Public Meeting</h2>
+                                <div class="mag-card">
+                                    <div class="mag-card__body">
+                                        <p>Join us for a virtual public meeting to learn about the <strong>Loop 101 and Loop 202 Bottleneck Study</strong>.</p>
+                                        <p><strong>Wednesday, October 15, 2025</strong> from <strong>6 – 7 pm</strong> (presentation begins at 6 pm).</p>
+                                        <p>Study team members will be available to answer questions following the presentation.</p>
+                                        <p><a class="mag-button mag-button--primary" href="#register">RSVP Now</a></p>
+                                    </div>
+                                </div>
+                                <h3 id="register" class="mag-section__subtitle">RSVP for the Public Meeting</h3>
+                                <div class="mag-card mag-card--secondary">
+                                    <div class="mag-card__body">
+                                        <form id="registration-form" class="mag-form" action="#" method="post" novalidate>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="registerFirstName">First name <span class="mag-form__required">(required)</span></label>
+                                                        <input id="registerFirstName" name="first_name" type="text" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="registerLastName">Last name <span class="mag-form__required">(required)</span></label>
+                                                        <input id="registerLastName" name="last_name" type="text" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="registerEmail">Email address <span class="mag-form__required">(required)</span></label>
+                                                <input id="registerEmail" name="email" type="email" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="registerZip">ZIP code</label>
+                                                <input id="registerZip" name="zip" type="text" class="form-control" pattern="[0-9]{5}" placeholder="85003">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="registerQuestions">Do you have any questions for the presentation team?</label>
+                                                <textarea id="registerQuestions" name="questions" class="form-control" rows="3" placeholder="Share questions or accessibility needs."></textarea>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="reminder_opt_in" checked>
+                                                    Email me a reminder one day before the meeting.
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="mag-button mag-button--primary">Reserve My Spot</button>
+                                            <div class="mag-form__status" aria-live="polite"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3 id="survey" class="mag-section__subtitle">We Need Your Input</h3>
+                                <div class="mag-card">
+                                    <div class="mag-card__body">
+                                        <p>Your input is critical in helping us understand the issues within the study corridor and develop improvement recommendations.</p>
+                                        <p><a class="mag-button mag-button--secondary" href="#feedback">Take the Survey</a></p>
+                                    </div>
+                                </div>
+
+                                <h3 id="updates" class="mag-section__subtitle">Get Email Updates</h3>
+                                <div class="mag-card">
+                                    <div class="mag-card__body">
+                                        <p>Please sign up to receive project updates, public meeting notices, surveys, and requests for comment announcements.</p>
+                                        <form action="#" method="post" class="mag-form">
+                                            <div class="form-group">
+                                                <label for="subEmail">Email address</label>
+                                                <input id="subEmail" name="email" type="email" required class="form-control">
+                                            </div>
+                                            <button type="submit" class="mag-button mag-button--secondary">Subscribe</button>
+                                            <div class="mag-form__status" aria-live="polite"></div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="container col-sm-4">
-                            <h3 class="mag-section__subtitle">We need Your Input</h3>
-                            <div class="mag-card">
-                                <div class="mag-card__body">
-                                    <p>Your input is critical in helping us understand the issues within the study corridor and develop improvement recommendations.</p>
-                                    <p><a class="mag-button mag-button--secondary" href="#">Take the Survey</a></p>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="mag-card mag-card--notice">
+                                    <div class="mag-card__body">
+                                        <p><strong>Pursuant to Title VI of the Civil Rights Act of 1964, and the Americans with Disabilities Act (ADA)</strong>, Maricopa Association of Governments (MAG) does not discriminate on the basis of race, color, national origin, age, sex, or disability. Persons who require a reasonable accommodation based on language or disability should contact MAG at <a href="tel:6022546300">602.254.6300</a> or <a href="mailto:mag@azmag.gov">mag@azmag.gov</a>. Requests should be made as early as possible to ensure MAG has an opportunity to address the accommodation.</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <h3 class="mag-section__subtitle">Get email updates!</h3>
-                            <div class="mag-card">
-                                <div class="mag-card__body">
-                                    <p>Please sign up to receive project updates, public meeting notices, surveys, and requests for comment announcements.</p>
-                                    <form action="#" method="post" class="mag-form">
-                                        <div class="form-group">
-                                            <label for="subEmail">Email address</label>
-                                            <input id="subEmail" name="email" type="email" required class="form-control">
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: Feedback Survey -->
+                <section id="feedback" class="mag-section mag-section--feedback" aria-labelledby="feedback-heading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h2 id="feedback-heading" class="mag-section__title">Share Your Feedback</h2>
+                                <p>Your perspective helps MAG prioritize improvements at the Loop 101/Loop 202 interchange. Please complete this short survey.</p>
+                                <form id="feedback-form" class="mag-form" action="#" method="post" novalidate>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="feedbackName">Name (optional)</label>
+                                                <input id="feedbackName" name="name" type="text" class="form-control" placeholder="First and last name">
+                                            </div>
                                         </div>
-                                        <button type="submit" class="mag-button mag-button--secondary">Subscribe</button>
-                                        <div class="mag-form__status" aria-live="polite"></div>
-                                    </form>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="feedbackEmail">Email (optional)</label>
+                                                <input id="feedbackEmail" name="email" type="email" class="form-control" placeholder="name@email.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="feedbackRole">How do you most often interact with this corridor? <span class="mag-form__required">(required)</span></label>
+                                        <select id="feedbackRole" name="role" class="form-control" required>
+                                            <option value="" disabled selected>Select one</option>
+                                            <option value="commuter">Daily commuter</option>
+                                            <option value="resident">Nearby resident</option>
+                                            <option value="business">Business owner/employee</option>
+                                            <option value="freight">Freight/delivery driver</option>
+                                            <option value="visitor">Occasional visitor</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="feedbackChallenges">What transportation challenges do you experience in this area? <span class="mag-form__required">(required)</span></label>
+                                        <textarea id="feedbackChallenges" name="challenges" class="form-control" rows="4" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="feedbackIdeas">What improvements would you like the study team to consider?</label>
+                                        <textarea id="feedbackIdeas" name="ideas" class="form-control" rows="4" placeholder="Share ideas or locations where change would help the most."></textarea>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="feedbackOptIn" name="opt_in">
+                                            Email me when new meetings or surveys are available.
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="mag-button mag-button--primary">Submit Feedback</button>
+                                    <div class="mag-form__status" aria-live="polite"></div>
+                                </form>
+                            </div>
+                            <div class="col-md-5">
+                                <aside class="mag-card mag-card--secondary" aria-labelledby="feedback-reminder">
+                                    <div class="mag-card__body">
+                                        <h3 id="feedback-reminder" class="mag-section__subtitle">Survey Snapshot</h3>
+                                        <ul class="mag-list">
+                                            <li>Survey closes <strong>Friday, November 7, 2025</strong>.</li>
+                                            <li>Responses inform near-term and long-range improvements.</li>
+                                            <li>Need assistance? Call <a href="tel:6022546300">602-254-6300</a> or email <a href="mailto:mag@azmag.gov">mag@azmag.gov</a>.</li>
+                                        </ul>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: Study Materials -->
+                <section id="materials" class="mag-section mag-section--materials" aria-labelledby="materials-heading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 id="materials-heading" class="mag-section__title">Study Materials</h2>
+                                <p>Explore supporting documents to prepare for the meeting and stay informed about study recommendations.</p>
+                                <div class="mag-card">
+                                    <div class="mag-card__body">
+                                        <p><strong>Featured Download:</strong> Loop 101 &amp; Loop 202 Bottleneck Study Overview (PDF)</p>
+                                        <p>
+                                            <a class="mag-button mag-button--primary" href="Assets/Study Details.pdf" target="_blank" rel="noopener">
+                                                Download Study Overview (PDF)
+                                            </a>
+                                        </p>
+                                        <p class="mag-card__meta">Also available: <a class="mag-link" href="Assets/Meeting Details.pdf" target="_blank" rel="noopener">Public Meeting Details (PDF)</a></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="container col-sm-12">
-                            <div class="mag-card mag-card--notice">
-                                <div class="mag-card__body">
-                                    <p><strong>Pursuant to Title VI of the Civil Rights Act of 1964, and the Americans with Disabilities Act (ADA)</strong>, Maricopa Association of Governments (MAG) does not discriminate on the basis of race, color, national origin, age, sex, or disability. Persons who require a reasonable accommodation based on language or disability should contact MAG at <a href="tel:6022546300">602.254.6300</a> or <a href="mailto:mag@azmag.gov">mag@azmag.gov</a>. Requests should be made as early as possible to ensure MAG has an opportunity to address the accommodation.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- SECTION: Study Objectives -->
-                    <section id="objectives" class="mag-section mag-section--objectives">
-                        <div class="container col-sm-6">
-                            <h2 class="mag-section__title">Study Objectives</h2>
-                            <p>The purpose of the Loop 101 and Loop 202 Bottleneck Study is to identify proposed corridor improvements to enhance safety and improve traffic operations in the study area.</p>
-                            <p>To identify potential improvements, the study team will:</p>
-                            <ul class="mag-list">
-                                <li>Evaluate existing and future conditions in study area.</li>
-                                <li>Review findings and recommendations from previous studies and include compatible recommendations.</li>
-                                <li>Identify stakeholder and public priorities through public meetings and surveys.</li>
-                            </ul>
-                            <p>The proposed recommendations will be focused on both design and operational strategies. This study is the first step in a multi-step process to improve travel within this corridor.</p>
-                            </div>
-                            <div class="container col-sm-6">
-                            <figure class="mag-figure">
-                                <a href="#mapModal" data-toggle="modal" class="mag-map-thumb">
-                                    <img class="img-responsive" src="img/Map.jpg" alt="Map of the Loop 101 (Price Freeway) and Loop 202 (Red Mountain Freeway) study area. Click to view larger.">
-                                </a>
-                                <figcaption class="mag-figure__caption">Study area overview (click to enlarge).</figcaption>
-                            </figure>
-                        </div>
-                    </section>
+                    </div>
+                </section>
+                <!-- SECTION: Study Objectives -->
+                <section id="objectives" class="mag-section mag-section--objectives" aria-labelledby="objectives-heading">
+                    <div class="container">
+                        <h2 id="objectives-heading" class="mag-section__title">Study Objectives</h2>
+                        <p>The purpose of the Loop 101 and Loop 202 Bottleneck Study is to identify proposed corridor improvements to enhance safety and improve traffic operations in the study area.</p>
+                        <p>To identify potential improvements, the study team will:</p>
+                        <ul class="mag-list">
+                            <li>Evaluate existing and future conditions in study area.</li>
+                            <li>Review findings and recommendations from previous studies and include compatible recommendations.</li>
+                            <li>Identify stakeholder and public priorities through public meetings and surveys.</li>
+                        </ul>
+                        <p>The proposed recommendations will be focused on both design and operational strategies. This study is the first step in a multi-step process to improve travel within this corridor.</p>
+                    </div>
+                </section>
 
-                    <!-- SECTION: Study Area -->
-                    <section id="study-area" class="mag-section mag-section--area">
-                        <div class="container">
-                            <h2 class="mag-section__title">Study Area</h2>
-                            <p>The study will focus on the Loop 101 (Price Freeway) and the Loop 202 (Red Mountain Freeway) corridors and access between the freeways and arterial network. The freeway corridor study limits are:</p>
-                            <ul class="mag-list">
-                                <li><strong>Loop 101 (Price Freeway):</strong> US 60 to just north of the Loop 202 (Red Mountain Freeway)</li>
-                                <li><strong>Loop 202 (Red Mountain Freeway):</strong> Priest Drive to Dobson Road</li>
-                            </ul>
+                <!-- SECTION: Study Area -->
+                <section id="study-area" class="mag-section mag-section--area" aria-labelledby="study-area-heading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2 id="study-area-heading" class="mag-section__title">Study Area</h2>
+                                <p>The study will focus on the Loop 101 (Price Freeway) and the Loop 202 (Red Mountain Freeway) corridors and access between the freeways and arterial network. The freeway corridor study limits are:</p>
+                                <ul class="mag-list">
+                                    <li><strong>Loop 101 (Price Freeway):</strong> US 60 to just north of the Loop 202 (Red Mountain Freeway)</li>
+                                    <li><strong>Loop 202 (Red Mountain Freeway):</strong> Priest Drive to Dobson Road</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="mag-figure">
+                                    <a href="#mapModal" data-toggle="modal" class="mag-map-thumb">
+                                        <img class="img-responsive" src="img/Map.jpg" alt="Map of the Loop 101 (Price Freeway) and Loop 202 (Red Mountain Freeway) study area. Click to view larger.">
+                                    </a>
+                                    <figcaption class="mag-figure__caption">Study area overview (click to enlarge).</figcaption>
+                                </figure>
+                            </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
 
                     <!-- SECTION: Study Process -->
-                    <section id="process" class="mag-section mag-section--process">
-                        <div class="container">
-                            <h2 class="mag-section__title">Study Process</h2>
-                            <p>The study will take approximately two years with public engagement</p>
-                            <figure class="mag-figure">
-                                <img src="img/Timeline.jpg" class="img-responsive" alt="Timeline illustrating major study phases and milestones over approximately two years.">
-                                <figcaption class="mag-figure__caption">Projected timeline and major milestones.</figcaption>
-                            </figure>
-                        </div>
+                <section id="process" class="mag-section mag-section--process" aria-labelledby="process-heading">
+                    <div class="container">
+                        <h2 id="process-heading" class="mag-section__title">Study Process</h2>
+                        <p>The study will take approximately two years with public engagement conducted at key milestones of the process. The study timeline is below.</p>
+                        <figure class="mag-figure">
+                            <img src="img/Timeline.jpg" class="img-responsive" alt="Timeline illustrating major study phases and milestones over approximately two years.">
+                            <figcaption class="mag-figure__caption">Projected timeline and major milestones.</figcaption>
+                        </figure>
+                    </div>
                     </section>
                     <!-- SECTION: Study Partners -->
-                    <section id="partners" class="mag-section mag-section--partners">
-                        <div class="container text-center">
-                            <h2 class="mag-section__title">Study Partners</h2>
+                <section id="partners" class="mag-section mag-section--partners" aria-labelledby="partners-heading">
+                    <div class="container">
+                        <h2 id="partners-heading" class="mag-section__title">Study Partners</h2>
                             <p class="mag-section__intro">This study is a collaborative effort among regional and local agencies committed to improving transportation safety and mobility within the Phoenix metropolitan area.</p>
 
-                            <ul class="mag-partners__list row list-unstyled">
+                            <ul class="mag-partners__list row list-unstyled text-center">
                                 <li class="col-xs-6 col-sm-3 mag-partners__item">
                                     <a href="http://www.azdot.gov/" target="_blank" rel="noopener">
                                         <img src="img/partners/adot.png" alt="Arizona Department of Transportation logo">
@@ -237,24 +380,23 @@
                             </ul>
                         </div>
                     </section>
-                    <!-- SECTION: Study Statistics -->
-                    <section id="statistics" class="mag-section mag-section--stats" aria-labelledby="stats-heading">
-                        <div class="container">
-                            <h2 id="stats-heading" class="mag-section__title">Study Statistics</h2>
+                <!-- SECTION: Study Statistics -->
+                <section id="statistics" class="mag-section mag-section--stats" aria-labelledby="stats-heading">
+                    <div class="container">
+                        <h2 id="stats-heading" class="mag-section__title">Study Statistics</h2>
 
-                            <!-- Toggle controls -->
-                            <div class="mag-chart-toggle btn-group" role="group" aria-label="Choose dataset to display">
-                                <button type="button" class="btn btn-default mag-chart-btn active" data-chart="air" aria-pressed="true">Air Quality Days</button>
-                                <button type="button" class="btn btn-default mag-chart-btn" data-chart="vmt" aria-pressed="false">VMT by Year</button>
-                                <button type="button" class="btn btn-default mag-chart-btn" data-chart="energy" aria-pressed="false">Energy Use by Source</button>
-                            </div>
-
-                            <!-- One shared canvas -->
-                            <canvas id="magChart" width="600" height="320" aria-label="Visualization of study statistics" role="img"></canvas>
-                            <p id="magChartSummary" class="mag-chart__summary">In 2024, Maricopa County had 210 good air quality days and 120 moderate days; fewer than 5% of days were unhealthy.</p>
+                        <!-- Toggle controls -->
+                        <div class="mag-chart-toggle btn-group" role="group" aria-label="Choose dataset to display">
+                            <button type="button" class="btn btn-default mag-chart-btn active" data-chart="air" aria-pressed="true">Air Quality Days</button>
+                            <button type="button" class="btn btn-default mag-chart-btn" data-chart="vmt" aria-pressed="false">VMT by Year</button>
+                            <button type="button" class="btn btn-default mag-chart-btn" data-chart="energy" aria-pressed="false">Energy Use by Source</button>
                         </div>
-                    </section>
-                </div>
+
+                        <!-- One shared canvas -->
+                        <canvas id="magChart" width="600" height="320" aria-label="Visualization of study statistics" role="img"></canvas>
+                        <p id="magChartSummary" class="mag-chart__summary">In 2024, Maricopa County had 210 good air quality days and 120 moderate days; fewer than 5% of days were unhealthy.</p>
+                    </div>
+                </section>
             </div>
         </main>
 
