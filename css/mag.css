@@ -66,7 +66,10 @@ body.mag-body{
   display:inline-flex;
   align-items:center;
 }
-.mag-header__logo img { max-height: 48px; }
+.mag-header__logo img {
+  max-height: 48px;
+  max-width: 250px;
+}
 .mag-header__toggle{
   display:none;
   align-items:center;
@@ -212,6 +215,12 @@ body.mag-body{
   }
 }
 
+@media (min-width: 1201px){
+  .mag-header__logo img {
+    max-width: 280px;
+  }
+}
+
 /* ---- Hero / Banner ---------------------------------------------------------- */
 .mag-hero { position: relative; background: var(--mag-blue); color:#fff; overflow: hidden; }
 .mag-hero__media { position: relative; }
@@ -327,9 +336,8 @@ body.mag-body{
   background: #f5f9ff;
   padding: 48px 0;
 }
-.mag-section--materials{
-  background: var(--mag-surface);
-  padding: 48px 0;
+#materials-heading {
+  margin-top: 2em;
 }
 
 
