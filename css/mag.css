@@ -145,21 +145,29 @@ body.mag-body{
 @media (max-width: 767px){
   .mag-header__toggle{ display:inline-flex; }
   .mag-header__nav{
-    display:none;
     position:absolute;
-    left:0;
-    right:0;
+    left:-15px;
+    right:-15px;
     top:100%;
-    margin-top:12px;
+    margin-top:10px;
     background:#fff;
     border:1px solid #e5e7eb;
-    border-radius: var(--mag-radius);
+    border-radius: 0;
     box-shadow:0 12px 30px rgba(15,23,42,.18);
-    padding: 8px 0;
+    padding: 12px 0;
     z-index: 1030;
+    opacity:0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: transform .25s ease, opacity .2s ease, visibility 0s linear .25s;
+    pointer-events: none;
   }
   .mag-header__nav.mag-header__nav--open{
-    display:block;
+    opacity:1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+    pointer-events: auto;
   }
   .mag-header__nav-list{
     flex-direction:column;
@@ -186,6 +194,10 @@ body.mag-body{
     box-shadow:none;
     padding:0;
     width:auto;
+    opacity:1;
+    visibility: visible;
+    transform:none;
+    pointer-events:auto;
   }
   .mag-header__nav-list{
     justify-content:flex-end;
@@ -296,6 +308,11 @@ body.mag-body{
   color: var(--mag-blue);
   scroll-margin-top: 116px;
 }
+.mag-section__intro{
+  font-size: 16px;
+  color: var(--mag-muted);
+  margin-bottom: var(--mag-gap-3);
+}
 .mag-card__body .mag-section__subtitle{ margin-top: 0; }
 
 .mag-section:last-of-type{ margin-bottom: 0; }
@@ -335,11 +352,30 @@ body.mag-body{
 
 .mag-partners__item {
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 16px;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.mag-partners__item.is-prep{
+  opacity: 0;
+  transform: translateY(24px);
+}
+.mag-partners__item.is-visible{
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .mag-partners__item img {
-  max-width: 100%;
+  max-width: 160px;
+  max-height: 70px;
+  width: auto;
   height: auto;
+  object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.85;
   transition: all 0.2s ease-in-out;
