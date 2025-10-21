@@ -155,6 +155,33 @@
     wireForm($('.mag-form'));
 
     /* -------------------------------------------
+       Partners: reveal logos when section enters view
+       ------------------------------------------- */
+    var $partnerItems = $('.mag-partners__item');
+    if ($partnerItems.length) {
+      $partnerItems.each(function () {
+        $(this).addClass('is-prep');
+      });
+      if ('IntersectionObserver' in window) {
+        var partnersObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              $(entry.target).removeClass('is-prep').addClass('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+
+        $partnerItems.each(function (index, item) {
+          item.style.transitionDelay = Math.min(index * 70, 280) + 'ms';
+          partnersObserver.observe(item);
+        });
+      } else {
+        $partnerItems.removeClass('is-prep').addClass('is-visible');
+      }
+    }
+
+    /* -------------------------------------------
        4) Modal focus return to trigger
        ------------------------------------------- */
     var $lastTrigger = null;
