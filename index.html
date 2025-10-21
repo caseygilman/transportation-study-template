@@ -86,13 +86,16 @@
             </div>
             <div class="mag-hero__overlay">
                 <div class="container">
-                    <h1 class="mag-hero__title">Loop 101 and Loop 202 Bottleneck Study</h1>
-                    <p class="mag-hero__dek">Help shape safety and mobility improvements at the interchange.</p>
-                    <p class="mag-hero__ctas">
+                    <h1 class="mag-hero__title">Loop 101 and Loop 202 <span class="unbreakable-text">Bottleneck Study</span></h1>
+                    <p class="mag-hero__dek">Help shape safety and <span class="unbreakable-text">mobility improvements</span> <span class="unbreakable-text">at the interchange.</span></p>
+                    <div class="mag-hero__actions" role="group" aria-label="Study actions">
                         <a class="mag-button mag-button--primary" href="#register">Register for Public Meeting</a>
                         <a class="mag-button mag-button--secondary" href="#feedback">Take the Survey</a>
-                        <a class="mag-link" href="#updates">Email Updates</a>
-                        <a class="mag-link" href="#materials">Materials (PDF)</a>
+                    </div>
+                    <p class="mag-hero__aux">
+                        <a href="Assets/Study Details.pdf" class="mag-hero__aux-link" target="_blank" rel="noopener">Download Study Overview (PDF)</a>
+                        <span aria-hidden="true"> · </span>
+                        <a class="mag-hero__aux-link" href="#updates">Get Email Updates</a>
                     </p>
                 </div>
             </div>
@@ -368,19 +371,26 @@
                         <h2 id="stats-heading" class="mag-section__title">Study Statistics</h2>
 
                         <!-- Toggle controls -->
-                        <div class="mag-chart-toggle btn-group" role="group" aria-label="Choose dataset to display">
+                        <div class="mag-chart-toggle" role="group" aria-label="Choose dataset to display">
                             <button type="button" class="btn btn-default mag-chart-btn active" data-chart="air" aria-pressed="true">Air Quality Days</button>
                             <button type="button" class="btn btn-default mag-chart-btn" data-chart="vmt" aria-pressed="false">VMT by Year</button>
                             <button type="button" class="btn btn-default mag-chart-btn" data-chart="energy" aria-pressed="false">Energy Use by Source</button>
                         </div>
 
                         <!-- One shared canvas -->
-                        <canvas id="magChart" width="600" height="320" aria-label="Visualization of study statistics" role="img"></canvas>
+                        <div class="mag-chart__wrap" aria-live="polite">
+                            <canvas id="magChart" width="600" height="320" aria-label="Visualization of study statistics" role="img"></canvas>
+                        </div>
                         <p id="magChartSummary" class="mag-chart__summary">In 2024, Maricopa County had 210 good air quality days and 120 moderate days; fewer than 5% of days were unhealthy.</p>
                     </div>
                 </section>
             </div>
         </main>
+
+        <div class="mag-sticky-cta" role="region" aria-label="Quick actions">
+            <a class="mag-sticky-cta__btn mag-sticky-cta__btn--primary" href="#register">Register</a>
+            <a class="mag-sticky-cta__btn mag-sticky-cta__btn--secondary" href="#feedback">Survey</a>
+        </div>
 
         <footer class="mag-footer" role="contentinfo">
             <div class="container">
