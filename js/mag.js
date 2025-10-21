@@ -9,6 +9,64 @@
   $(function () {
 
     /* -------------------------------------------
+       0) Header navigation toggle (mobile)
+       ------------------------------------------- */
+    var $navToggle = $('#magNavToggle');
+    var $nav = $('#magPrimaryNav');
+    if ($navToggle.length && $nav.length) {
+      var desktopMq = window.matchMedia('(min-width: 768px)');
+
+      function syncNavState() {
+        var isDesktop = desktopMq.matches;
+        var isExpanded = $navToggle.attr('aria-expanded') === 'true';
+        if (isDesktop) {
+          $nav.removeClass('mag-header__nav--open');
+          $nav.attr('aria-hidden', 'false');
+          $navToggle.attr('aria-expanded', 'false').removeClass('mag-header__toggle--open');
+        } else {
+          $nav.toggleClass('mag-header__nav--open', isExpanded);
+          $nav.attr('aria-hidden', isExpanded ? 'false' : 'true');
+        }
+      }
+
+      $navToggle.on('click', function () {
+        var isExpanded = $(this).attr('aria-expanded') === 'true';
+        var nextState = !isExpanded;
+        $(this).attr('aria-expanded', nextState)
+          .toggleClass('mag-header__toggle--open', nextState);
+        $nav.toggleClass('mag-header__nav--open', nextState)
+            .attr('aria-hidden', nextState ? 'false' : 'true');
+
+        if (!nextState) {
+          $(this).focus();
+        }
+      });
+
+      $nav.on('click', '.mag-header__nav-link', function () {
+        if (!desktopMq.matches) {
+          $navToggle.attr('aria-expanded', 'false')
+            .removeClass('mag-header__toggle--open');
+          $nav.removeClass('mag-header__nav--open')
+              .attr('aria-hidden', 'true');
+        }
+      });
+
+      $(document).on('keydown', function (evt) {
+        if (evt.key === 'Escape' && $navToggle.attr('aria-expanded') === 'true') {
+          $navToggle.trigger('click');
+        }
+      });
+
+      if (typeof desktopMq.addEventListener === 'function') {
+        desktopMq.addEventListener('change', syncNavState);
+      } else if (typeof desktopMq.addListener === 'function') {
+        desktopMq.addListener(syncNavState);
+      }
+
+      syncNavState();
+    }
+
+    /* -------------------------------------------
        1) Site search reveal (aria-friendly)
        ------------------------------------------- */
     // Focus search field when the modal opens
@@ -55,32 +113,43 @@
     /* -------------------------------------------
        3) Forms: simple required validation + status
        ------------------------------------------- */
-    function wireForm($form) {
-      if (!$form.length) { return; }
-      $form.on('submit', function (e) {
-        e.preventDefault();
-        var valid = true;
-        $form.find('[required]').each(function () {
-          var val = $.trim($(this).val());
-          if (!val) {
-            valid = false;
-            $(this).attr('aria-invalid', 'true').closest('.form-group').addClass('has-error');
-          } else {
-            $(this).removeAttr('aria-invalid').closest('.form-group').removeClass('has-error');
+    function wireForm($forms) {
+      if (!$forms.length) { return; }
+      $forms.each(function () {
+        var $form = $(this);
+        $form.on('submit', function (e) {
+          e.preventDefault();
+          var valid = true;
+          $form.find('[required]').each(function () {
+            var $field = $(this);
+            var fieldValid = true;
+            if (typeof this.checkValidity === 'function') {
+              fieldValid = this.checkValidity();
+            } else {
+              fieldValid = $.trim($field.val()).length > 0;
+            }
+            if (!fieldValid) {
+              valid = false;
+              $field.attr('aria-invalid', 'true').closest('.form-group').addClass('has-error');
+            } else {
+              $field.removeAttr('aria-invalid').closest('.form-group').removeClass('has-error');
+            }
+          });
+
+          var $status = $form.find('.mag-form__status');
+          if ($status.length) {
+            if (!valid) {
+              $status.text('Please complete all required fields.').css('color', '#b91c1c');
+            } else {
+              $status.text('Thanks! Your submission has been received.').css('color', '#166534');
+              $form[0].reset();
+            }
           }
         });
-        var $status = $form.find('.mag-form__status');
-        if ($status.length) {
-          if (!valid) {
-            $status.text('Please complete all required fields.').css('color', '#b91c1c');
-          } else {
-            $status.text('Thanks! Your submission has been received.').css('color', '#166534');
-            this.reset();
-          }
-        }
-      });
-      $form.find('input, textarea, select').on('input change', function () {
-        $(this).removeAttr('aria-invalid').closest('.form-group').removeClass('has-error');
+
+        $form.find('input, textarea, select').on('input change', function () {
+          $(this).removeAttr('aria-invalid').closest('.form-group').removeClass('has-error');
+        });
       });
     }
     wireForm($('.mag-form'));
@@ -194,16 +263,18 @@
          6) Fallback: JS disabled or Chart.js missing
          ------------------------------------------- */
       var $chartContainer = $('#statistics .container');
-      if ($chartContainer.length && !$chartContainer.find('noscript').length) {
-        var fallback = '<noscript><div class="alert alert-info mag-chart-fallback">' +
-          '<p><strong>Interactive charts are unavailable because JavaScript is disabled.</strong></p>' +
-          '<p>You can still view summarized data below:</p>' +
+      if ($chartContainer.length && !$chartContainer.find('.mag-chart-fallback').length) {
+        var fallbackHtml = '' +
+          '<div class="mag-chart-fallback" role="group" aria-label="Key study statistics summary">' +
+          '<p><strong>Interactive charts are unavailable at the moment.</strong></p>' +
+          '<p>You can still review highlights from the dataset:</p>' +
           '<ul>' +
           '<li><strong>Air Quality Days (2024):</strong> 210 Good, 120 Moderate, 35 Unhealthy or worse.</li>' +
           '<li><strong>Vehicle Miles Traveled (2023):</strong> 60.8 billion miles.</li>' +
           '<li><strong>Energy Mix (2023):</strong> 35% Renewable, 35% Natural Gas, 18% Coal, 12% Nuclear.</li>' +
-          '</ul></div></noscript>';
-        $chartContainer.append(fallback);
+          '</ul>' +
+          '</div>';
+        $chartContainer.append(fallbackHtml);
       }
     }
 
