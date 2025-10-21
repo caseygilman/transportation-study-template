@@ -46,6 +46,10 @@ body.mag-body{
   position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto;
 }
 
+.unbreakable-text {
+  display: inline-block;
+}
+
 /* ---- Header ---------------------------------------------------------------- */
 .mag-header { background:#fff; border-bottom:1px solid #e5e7eb; }
 .mag-header__top { padding: 8px 15px; }
@@ -149,15 +153,17 @@ body.mag-body{
   .mag-header__toggle{ display:inline-flex; }
   .mag-header__nav{
     position:absolute;
-    left:-15px;
-    right:-15px;
+    left:50%;
+    right:auto;
     top:100%;
     margin-top:10px;
+    width:100vw;
+    margin-left:-50vw;
     background:#fff;
     border:1px solid #e5e7eb;
     border-radius: 0;
     box-shadow:0 12px 30px rgba(15,23,42,.18);
-    padding: 12px 0;
+    padding: 16px 0;
     z-index: 1030;
     opacity:0;
     visibility: hidden;
@@ -184,7 +190,7 @@ body.mag-body{
     display:block;
     width:100%;
     text-align:left;
-    padding: 12px 20px;
+    padding: 14px 24px;
   }
 }
 
@@ -222,19 +228,96 @@ body.mag-body{
 }
 
 /* ---- Hero / Banner ---------------------------------------------------------- */
-.mag-hero { position: relative; background: var(--mag-blue); color:#fff; overflow: hidden; }
-.mag-hero__media { position: relative; }
-.mag-hero__img {
-  width:100%; object-fit: cover; opacity: .35; display:block;
+.mag-hero {
+  position: relative;
+  background: var(--mag-blue);
+  color:#fff;
+  overflow: hidden;
+  min-height: 320px;
 }
-.mag-hero__overlay {
-  position:absolute; inset:0;
-  display:flex; align-items:center;
-  background: linear-gradient(0deg, rgba(24,52,93,0.55), rgba(24,52,93,0.35));
+.mag-hero__media {
+  position: relative;
+  min-height: 320px;
 }
-.mag-hero__title { font-weight: 700; margin: 0 0 8px; }
-.mag-hero__dek { margin: 0 0 14px; font-size: 16px; }
-.mag-hero__ctas a { margin-right: 10px; }
+.mag-hero__img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+  opacity:.35;
+  display:block;
+}
+.mag-hero__overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  background: linear-gradient(0deg, rgba(24,52,93,0.6), rgba(24,52,93,0.35));
+}
+.mag-hero__overlay .container{
+  padding: 56px 20px;
+}
+.mag-hero__title{
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.mag-hero__dek{
+  margin: 0 0 18px;
+  font-size: 17px;
+  max-width: 540px;
+}
+.mag-hero__actions{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.mag-hero__actions .mag-button{
+  margin-right:0;
+}
+.mag-hero__aux{
+  margin:0;
+  font-size: 14px;
+}
+.mag-hero__aux-link{
+  color:#fff;
+  text-decoration: underline;
+}
+.mag-hero__aux-link:hover,
+.mag-hero__aux-link:focus{
+  color: #c3e2ff;
+}
+
+@media (min-width: 768px){
+  .mag-hero{
+    min-height: 420px;
+  }
+  .mag-hero__media{ min-height: 420px; }
+  .mag-hero__overlay .container{
+    padding: 80px 30px;
+  }
+  .mag-hero__dek{
+    font-size: 18px;
+  }
+  .mag-hero__actions{
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px){
+  .mag-hero__actions{
+    display:none;
+  }
+}
+
+@media (max-width: 575px){
+  .mag-hero__overlay .container{
+    padding: 48px 20px;
+  }
+  .mag-hero__aux{
+    font-size: 13px;
+  }
+}
 
 /* ---- Buttons ---------------------------------------------------------------- */
 .mag-button{
@@ -398,6 +481,13 @@ body.mag-body{
 /* Charts */
 .mag-chart-toggle {
   margin: 10px 0 16px;
+  display:inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.mag-chart-btn{
+  min-width: 140px;
 }
 .mag-chart-btn.active {
   background-color: #18345D;
@@ -408,6 +498,12 @@ body.mag-body{
   color: #344054;
   font-size: 14px;
   text-align: center;
+}
+.mag-chart__wrap{
+  min-height: 320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 /* ==========================================================================
    Chart Fallback Styles (for when JS/Chart.js is disabled)
@@ -479,19 +575,33 @@ body.mag-body{
 .mag-sticky-cta{
   position: fixed; left:0; right:0; bottom:0; z-index: 1040;
   display: none; /* hidden by default; shown on small screens below */
-  padding: 8px; background: rgba(255,255,255,.96); border-top: 1px solid #e5e7eb;
+  padding: 12px;
+  background: rgba(255,255,255,.96);
+  border-top: 1px solid #e5e7eb;
+  gap: 12px;
 }
 .mag-sticky-cta__btn{
-  display:inline-block; width:48%; text-align:center; padding:10px 0; border-radius:8px;
-  font-weight:700; text-transform: uppercase; letter-spacing:.02em;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  flex:1;
+  min-height: 44px;
+  text-align:center;
+  padding:10px 0;
+  border-radius:8px;
+  font-weight:700;
+  text-transform: uppercase;
+  letter-spacing:.02em;
 }
 .mag-sticky-cta__btn--primary{ background: var(--mag-green); color:#0b0b0b; }
 .mag-sticky-cta__btn--secondary{ background:#fff; color: var(--mag-blue); border:2px solid var(--mag-blue); }
 
 @media (max-width: 767px){
-  .mag-sticky-cta{ display:block; }
+  .mag-sticky-cta{
+    display:flex;
+  }
   /* give page bottom padding so content isn't hidden behind sticky bar */
-  body.mag-body{ padding-bottom: 72px; }
+  body.mag-body{ padding-bottom: 104px; }
 }
 
 /* Footer */
