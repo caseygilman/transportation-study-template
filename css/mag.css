@@ -49,6 +49,12 @@ body.mag-body{
 .unbreakable-text {
   display: inline-block;
 }
+.show-at-768 { display: none; }
+@media (min-width: 768px){
+  .show-at-768 { display: inline-block; }
+  .hide-at-768 { display: none; }
+}
+
 
 /* ---- Header ---------------------------------------------------------------- */
 .mag-header { background:#fff; border-bottom:1px solid #e5e7eb; }
@@ -467,16 +473,15 @@ body.mag-body{
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.85;
   transition: all 0.2s ease-in-out;
 }
 
 .mag-partners__item img:hover,
 .mag-partners__item img:focus {
-  filter: grayscale(0%);
-  opacity: 1;
+  transform: scale(1.05);
 }
+
+
 
 /* Charts */
 .mag-chart-toggle {
