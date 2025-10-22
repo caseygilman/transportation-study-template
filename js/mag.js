@@ -182,6 +182,113 @@
     }
 
     /* -------------------------------------------
+       Timeline slider (Study Process)
+       ------------------------------------------- */
+    $('[data-timeline]').each(function () {
+      var $timeline = $(this);
+      var $viewport = $timeline.find('.mag-timeline__viewport');
+      if (!$viewport.length) { return; }
+      var $prev = $timeline.find('.mag-timeline__control--prev');
+      var $next = $timeline.find('.mag-timeline__control--next');
+      var mqNarrow = window.matchMedia('(max-width: 991px)');
+
+      function hasOverflow() {
+        var el = $viewport[0];
+        if (!el) { return false; }
+        return (el.scrollWidth - el.clientWidth) > 4;
+      }
+
+      function controlsEnabled() {
+        return mqNarrow.matches && hasOverflow();
+      }
+
+      function calcState() {
+        var el = $viewport[0];
+        if (!el) {
+          return { max: 0, current: 0, atStart: true, atEnd: true };
+        }
+        var max = Math.max(0, el.scrollWidth - el.clientWidth);
+        var current = $viewport.scrollLeft();
+        return {
+          max: max,
+          current: current,
+          atStart: current <= 2,
+          atEnd: current >= max - 2
+        };
+      }
+
+      function applyState() {
+        if (!controlsEnabled()) {
+          $timeline.addClass('mag-timeline--static is-start is-end');
+          $prev.prop('disabled', true);
+          $next.prop('disabled', true);
+          if ($viewport.scrollLeft() !== 0) {
+            $viewport.scrollLeft(0);
+          }
+          return;
+        }
+
+        var state = calcState();
+        $timeline.removeClass('mag-timeline--static');
+        $timeline.toggleClass('is-start', state.atStart);
+        $timeline.toggleClass('is-end', state.atEnd);
+        $prev.prop('disabled', state.atStart);
+        $next.prop('disabled', state.atEnd);
+      }
+
+      function scrollBy(delta) {
+        if (!controlsEnabled()) { return; }
+        var state = calcState();
+        var target = Math.min(Math.max(state.current + delta, 0), state.max);
+        if (supportsReducedMotion) {
+          $viewport.scrollLeft(target);
+          applyState();
+        } else {
+          $viewport.stop().animate({ scrollLeft: target }, 280, applyState);
+        }
+      }
+
+      function step() {
+        return Math.max($viewport.outerWidth() * 0.7, 240);
+      }
+
+      $prev.on('click', function () { scrollBy(-step()); });
+      $next.on('click', function () { scrollBy(step()); });
+
+      var scrollTimeout = null;
+      $viewport.on('scroll', function () {
+        if (!controlsEnabled()) { return; }
+        if (scrollTimeout) { clearTimeout(scrollTimeout); }
+        scrollTimeout = setTimeout(applyState, 60);
+      });
+
+      $viewport.on('keydown', function (evt) {
+        if (!controlsEnabled()) { return; }
+        if (evt.key === 'ArrowRight') {
+          evt.preventDefault();
+          scrollBy(step());
+        } else if (evt.key === 'ArrowLeft') {
+          evt.preventDefault();
+          scrollBy(-step());
+        }
+      });
+
+      function onMediaChange() {
+        applyState();
+      }
+
+      if (typeof mqNarrow.addEventListener === 'function') {
+        mqNarrow.addEventListener('change', onMediaChange);
+      } else if (typeof mqNarrow.addListener === 'function') {
+        mqNarrow.addListener(onMediaChange);
+      }
+
+      $(window).on('resize orientationchange', applyState);
+
+      applyState();
+    });
+
+    /* -------------------------------------------
        4) Modal focus return to trigger
        ------------------------------------------- */
     var $lastTrigger = null;
@@ -292,7 +399,7 @@
       var $chartContainer = $('#statistics .container');
       if ($chartContainer.length && !$chartContainer.find('.mag-chart-fallback').length) {
         var fallbackHtml = '' +
-          '<div class="mag-chart-fallback" role="group" aria-label="Key study statistics summary">' +
+          '<div class="mag-chart-fallback mag-text-sm" role="group" aria-label="Key study statistics summary">' +
           '<p><strong>Interactive charts are unavailable at the moment.</strong></p>' +
           '<p>You can still review highlights from the dataset:</p>' +
           '<ul>' +
