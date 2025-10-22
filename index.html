@@ -45,7 +45,7 @@
         <header class="mag-header" role="banner">
             <div class="mag-header__top container">
                 <nav class="mag-header__utility text-right" aria-label="Utility">
-                    <ul class="mag-header__utility-list list-inline">
+                    <ul class="mag-header__utility-list list-inline mag-text-sm">
                         <li><a class="mag-header__utility-link" href="#">Jobs</a></li>
                         <li><a class="mag-header__utility-link" href="#">RFP/RFQ</a></li>
                         <li><a class="mag-header__utility-link" href="#">Contact</a></li>
@@ -86,13 +86,13 @@
             </div>
             <div class="mag-hero__overlay">
                 <div class="container">
-                    <h1 class="mag-hero__title">Loop 101 and Loop 202 <span class="unbreakable-text">Bottleneck Study</span></h1>
-                    <p class="mag-hero__dek">Help shape safety and <span class="unbreakable-text">mobility improvements</span> <span class="unbreakable-text">at the interchange.</span></p>
+                    <h1 class="mag-hero__title">Loop 101 and Loop 202 Bottleneck Study</h1>
+                    <p class="mag-hero__dek mag-text-lg">Help shape safety and <span class="unbreakable-text">mobility improvements</span> <span class="unbreakable-text">at the interchange.</span></p>
                     <div class="mag-hero__actions" role="group" aria-label="Study actions">
                         <a class="mag-button mag-button--primary" href="#register">Register for Public Meeting</a>
                         <a class="mag-button mag-button--secondary" href="#feedback">Take the Survey</a>
                     </div>
-                    <p class="mag-hero__aux">
+                    <p class="mag-hero__aux mag-text-sm">
                         <a href="Assets/Study Details.pdf" class="mag-hero__aux-link" target="_blank" rel="noopener">Download Study Overview (PDF)</a>
                         <span aria-hidden="true"> · </span>
                         <a class="mag-hero__aux-link" href="#updates">Get Email Updates</a>
@@ -107,18 +107,14 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8">
-                                <h2 id="meeting-heading" class="mag-section__title">Save the Date for a Virtual Public Meeting</h2>
-                                <div class="mag-card">
+                                <h2 id="meeting-heading" class="mag-section__title mag-section__title--compact">Save the Date for a Virtual Public Meeting</h2>
+                                <p class="mag-text-base">Join us for a virtual public meeting to learn about the <strong>Loop 101 and Loop 202 Bottleneck Study</strong>.</p>
+                                <p class="mag-text-base"><strong>Wednesday, October 15, 2025</strong> from <strong>6 – 7 pm</strong> (presentation begins at 6 pm).</p>
+                                <p class="mag-text-base">Study team members will be available to answer questions following the presentation.</p>
+
+                                <div class="mag-card mag-card--secondary" id="register">
                                     <div class="mag-card__body">
-                                        <p>Join us for a virtual public meeting to learn about the <strong>Loop 101 and Loop 202 Bottleneck Study</strong>.</p>
-                                        <p><strong>Wednesday, October 15, 2025</strong> from <strong>6 – 7 pm</strong> (presentation begins at 6 pm).</p>
-                                        <p>Study team members will be available to answer questions following the presentation.</p>
-                                        <p><a class="mag-button mag-button--primary" href="#register">RSVP Now</a></p>
-                                    </div>
-                                </div>
-                                <h3 id="register" class="mag-section__subtitle">RSVP for the Public Meeting</h3>
-                                <div class="mag-card mag-card--secondary">
-                                    <div class="mag-card__body">
+                                        <p class="mag-text-base"><strong>Reserve your seat:</strong> Submit the form below to receive the meeting link and reminder emails.</p>
                                         <form id="registration-form" class="mag-form" action="#" method="post" novalidate>
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -167,7 +163,7 @@
                                     </div>
                                 </div>
 
-                                <h3 id="updates" class="mag-section__subtitle">Get Email Updates</h3>
+                                <h3 id="updates" class="mag-section__subtitle">Get Email Updates!</h3>
                                 <div class="mag-card">
                                     <div class="mag-card__body">
                                         <p>Please sign up to receive project updates, public meeting notices, surveys, and requests for comment announcements.</p>
@@ -289,7 +285,7 @@
                                 </ul>
                                 
                                 <h2 id="materials-heading" class="mag-section__title">Study Materials</h2>
-                                <p class="mag-section__intro">Review key documents to stay informed and follow the study as it progresses.</p>
+                                <p class="mag-section__intro mag-text-base">Review key documents to stay informed and follow the study as it progresses.</p>
                                 <p><a class="mag-button mag-button--primary" href="Assets/Study Details.pdf" target="_blank" rel="noopener">Download Study Overview (PDF)</a></p>
                             </div>
                             <div class="col-md-6">
@@ -297,7 +293,7 @@
                                     <a href="#mapModal" data-toggle="modal" class="mag-map-thumb">
                                         <img class="img-responsive" src="img/Map.jpg" alt="Map of the Loop 101 (Price Freeway) and Loop 202 (Red Mountain Freeway) study area. Click to view larger.">
                                     </a>
-                                    <figcaption class="mag-figure__caption">Study area overview (click to enlarge).</figcaption>
+                                    <figcaption class="mag-figure__caption mag-text-xs">Study area overview (click to enlarge).</figcaption>
                                 </figure>
                             </div>
                         </div>
@@ -308,10 +304,20 @@
                 <section id="process" class="mag-section mag-section--process" aria-labelledby="process-heading">
                     <div class="container">
                         <h2 id="process-heading" class="mag-section__title">Study Process</h2>
-                        <p>The study will take approximately two years with public engagement conducted at key milestones of the process. The study timeline is below.</p>
-                        <figure class="mag-figure">
-                            <img src="img/Timeline.jpg" class="img-responsive" alt="Timeline illustrating major study phases and milestones over approximately two years.">
-                            <figcaption class="mag-figure__caption">Projected timeline and major milestones.</figcaption>
+                        <p class="mag-text-base">The study will take approximately two years with public engagement conducted at key milestones of the process. The study timeline is below.</p>
+                        <figure class="mag-figure mag-figure--timeline">
+                            <div class="mag-timeline" data-timeline>
+                                <button type="button" class="mag-timeline__control mag-timeline__control--prev" aria-label="Scroll timeline left" disabled data-dir="-1">
+                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                </button>
+                                <div class="mag-timeline__viewport" tabindex="0">
+                                    <img src="img/Timeline.jpg" class="mag-timeline__img" alt="Timeline illustrating major study phases and milestones over approximately two years.">
+                                </div>
+                                <button type="button" class="mag-timeline__control mag-timeline__control--next" aria-label="Scroll timeline right" data-dir="1">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <figcaption class="mag-figure__caption mag-text-xs">Projected timeline and major milestones.</figcaption>
                         </figure>
                     </div>
                     </section>
@@ -319,7 +325,7 @@
                 <section id="partners" class="mag-section mag-section--partners" aria-labelledby="partners-heading">
                     <div class="container">
                         <h2 id="partners-heading" class="mag-section__title">Study Partners</h2>
-                            <p class="mag-section__intro">This study is a collaborative effort among regional and local agencies committed to improving transportation safety and mobility within the Phoenix metropolitan area. <small>Click on a logo below to visit one of our partners sites and learn about them.</small></p>
+                        <p class="mag-section__intro mag-text-base">This study is a collaborative effort among regional and local agencies committed to improving transportation safety and mobility within the Phoenix metropolitan area. <small>Click on a logo below to visit one of our partners sites and learn about them.</small></p>
 
                             <ul class="mag-partners__list row list-unstyled text-center">
                                 <li class="col-xs-6 col-sm-3 mag-partners__item">
@@ -381,7 +387,7 @@
                         <div class="mag-chart__wrap" aria-live="polite">
                             <canvas id="magChart" width="600" height="320" aria-label="Visualization of study statistics" role="img"></canvas>
                         </div>
-                        <p id="magChartSummary" class="mag-chart__summary">In 2024, Maricopa County had 210 good air quality days and 120 moderate days; fewer than 5% of days were unhealthy.</p>
+                        <p id="magChartSummary" class="mag-chart__summary mag-text-sm">In 2024, Maricopa County had 210 good air quality days and 120 moderate days; fewer than 5% of days were unhealthy.</p>
                     </div>
                 </section>
             </div>
@@ -436,7 +442,7 @@
                 </div>
 
                 <!-- Legal -->
-                <p class="mag-footer__legal text-center">© 2025 Maricopa Association of Governments <span class="show-at-768">· </span><br class="hide-at-768"><a href="#">Terms of Use</a> | <a href="#">Privacy Statement</a>
+                <p class="mag-footer__legal text-center mag-text-xs">© 2025 Maricopa Association of Governments <span class="show-at-768">· </span><br class="hide-at-768"><a href="#">Terms of Use</a> | <a href="#">Privacy Statement</a>
                 </p>
             </div>
         </footer>
