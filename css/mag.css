@@ -27,6 +27,8 @@
 html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 
+a { color: #18345D; }
+
 body.mag-body{
   font-family: "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--mag-text);
